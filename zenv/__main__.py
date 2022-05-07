@@ -1,0 +1,3 @@
+import zenv
+
+zenv.main()
