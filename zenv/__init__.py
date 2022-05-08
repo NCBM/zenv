@@ -44,3 +44,23 @@ def main():
     if args.debug:
         print('Debug mode enabled')
         print(args)
+
+    if args.create:
+        from zenv import create, debug
+        arg = create.CreateZenEnvArgs(args.directory, args.python, args.mirror)
+        dbg = debug.DebugArgs(args.debug, args.quiet)
+        create.create_zen_env(arg, dbg)
+        return
+
+    if args.freeze:
+        from zenv import freeze, debug
+        arg = freeze.FreezeArgs(args.directory, args.dev)
+        dbg = debug.DebugArgs(args.debug, args.quiet)
+        freeze.freeze_zen_env(arg, dbg)
+        return
+
+    print('Unknown command')
+
+
+if __name__ == '__main__':
+    main()
